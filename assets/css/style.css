@@ -43,6 +43,22 @@ body {
     justify-content: end;
 }
 
+.abt-list-divs {
+    margin: 0 40px;
+}
+
+
+.abt-list i, .tailor-details p i {
+    color: #02cefc;
+}
+
+.abt-list p {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+
+/* Come alongs  */
 
 h1,h2,h3,h4,h5,h6 {
     font-family: "Oswald",sans-serif;
@@ -117,6 +133,10 @@ p {
 
 .mt-40 {
     margin-top: 40px
+}
+
+.mt-60 {
+    margin-top: 60px;
 }
 
 a,.button {
@@ -410,10 +430,16 @@ hr {
     padding-bottom: 100px
 }
 
+
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .section-padding {
         padding-top:100px;
         padding-bottom: 100px
+    }
+
+    .abt-list {
+        padding: 0 40px;
     }
 }
 
@@ -422,6 +448,10 @@ hr {
         padding-top:70px;
         padding-bottom: 70px
     }
+
+    .abt-list {
+        padding: 0 40px;
+    }
 }
 
 @media (max-width: 575px) {
@@ -429,6 +459,11 @@ hr {
         padding-top:70px;
         padding-bottom: 70px
     }
+
+    .abt-list {
+        padding: 0 15px;
+    }
+
 }
 
 .top-padding {
@@ -491,7 +526,7 @@ hr {
 
 @media (max-width: 575px) {
     .section-tittle {
-        margin-bottom:50px
+        margin-bottom:0px;
     }
 }
 
@@ -917,17 +952,17 @@ hr {
 
 .boxed-btn {
     background: #fff;
-    color: #02cefc !important;
+    color: #000000 !important;
     display: inline-block;
     padding: 18px 44px;
     font-family: "Oswald",sans-serif;
     font-size: 14px;
     font-weight: 400;
-    border: 0;
-    border: 1px solid #02cefc;
+    border-radius: 28px;
+    border: 1px solid #000000;
     letter-spacing: 1px;
     text-align: center;
-    color: #02cefc;
+    color: #000000;
     text-transform: uppercase;
     cursor: pointer
 }
@@ -1776,6 +1811,7 @@ hr {
 
 .about-area .about-caption h2 {
     background: black;
+    color: #02cefc;
     padding: 45px 60px;
     font-family: "Oswald",sans-serif;
     font-size: 58px;

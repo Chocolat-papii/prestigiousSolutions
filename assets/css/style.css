@@ -12,7 +12,9 @@ body {
     font-style: normal;
     font-size: 16px
 }
-#pic1 {
+
+
+.logo-container {
     position: absolute;
     display: flex;
     justify-content: flex-start;
@@ -22,10 +24,40 @@ body {
 }
 
 
-#pic1 a img {
+.logo-container a img {
     height: 54px;
     
 }
+
+.logo {
+    display: none;
+    max-width: 100%;
+}
+
+/* Show small logo by default */
+.small-logo {
+    display: block;
+}
+
+/* Media query for screens wider than 992px */
+@media (min-width: 992px) {
+    /* Hide small logo and show large logo */
+    .small-logo {
+        display: none;
+    }
+    .large-logo {
+        display: block;
+    }
+    .logo-container {
+        top: 8%;
+        left: 40px;
+    }
+
+    .logo-container a img {
+        height: 70px;
+    }
+}
+
 
 #pic2 a img {
     height: 60px;
@@ -4612,4 +4644,134 @@ b,sup,sub,u,del {
 
 .switch-wrap {
     margin-bottom: 10px
+}
+
+/* --- privacy policy --- */
+
+[data-custom-class='body'], [data-custom-class='body'] * {
+    background: transparent !important;
+  }
+[data-custom-class='title'], [data-custom-class='title'] * {
+    font-family: Arial !important;
+font-size: 26px !important;
+color: #000000 !important;
+  }
+[data-custom-class='subtitle'], [data-custom-class='subtitle'] * {
+    font-family: Arial !important;
+color: #595959 !important;
+font-size: 14px !important;
+  }
+[data-custom-class='heading_1'], [data-custom-class='heading_1'] * {
+    font-family: Arial !important;
+font-size: 19px !important;
+color: #000000 !important;
+  }
+[data-custom-class='heading_2'], [data-custom-class='heading_2'] * {
+    font-family: Arial !important;
+font-size: 17px !important;
+color: #000000 !important;
+  }
+[data-custom-class='body_text'], [data-custom-class='body_text'] * {
+    color: #595959 !important;
+font-size: 14px !important;
+font-family: Arial !important;
+  }
+[data-custom-class='link'], [data-custom-class='link'] * {
+    color: #3030F1 !important;
+font-size: 14px !important;
+font-family: Arial !important;
+word-break: break-word !important;
+  }
+
+
+  
+/* ----- FORM ----- */
+
+
+@media (max-width: 600px) {
+    .form {
+        width: 100%;
+      padding: 10px;
+    }
+    
+    .form input,
+    .form textarea {
+      font-size: 18px;
+    }
+    
+    .form .button {
+      font-size: 14px;
+    }
+
+    .mail {
+        font-size: 14px;
+    }
+
+    footer p {
+        font-size: 11px;
+    }
+  }
+  
+.form {
+max-width: 500px; /* Set max width of the form */
+margin: 20px auto;   /* Center the form horizontally */
+padding: 18px;
+
+}
+
+.form label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+color: white;
+
+}
+
+.form input,
+.form textarea {
+border: 0;
+width: 100%;
+padding: 10px;
+margin-bottom: 12px;
+color: black;
+border-bottom: 2px solid #ffffff;
+background-color: #ffffff;
+box-sizing: border-box; /* Includes padding in width calculation */
+}
+
+
+.form textarea {
+border-bottom: 2px solid black;
+min-height: 100px; /* Set a minimum height for the textarea */
+}
+
+.form input:valid,
+.form textarea:valid {
+border-color: black;
+}
+
+.form input:invalid,
+.form textarea:invalid {
+border-color: rgb(156, 156, 156);
+}
+
+
+.form .form-group {
+margin-bottom: 10px;
+}
+
+.button {
+border: none;
+padding: 8px 12px;
+background-color: #ffffff;
+color: black;
+border-bottom: 2px solid black;
+}
+
+.button:hover {
+    cursor: pointer;
+    border-bottom: 2px solid #ffffff;
+    background-color: black;
+    color: #ffffff;
+
 }

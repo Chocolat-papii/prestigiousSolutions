@@ -77,7 +77,17 @@ body {
 
 .abt-list-divs {
     margin: 0 40px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap:wrap
+    
 }
+
+.abt-list {
+    width: 500px
+}
+
 
 
 .abt-list i, .tailor-details p i {
@@ -1176,7 +1186,7 @@ hr {
     position: relative
 }
 
-.header-area .main-header .main-menu ul li a::after {
+.header-area .main-header .main-menu ul li a::before {
     content: "";
     position: absolute;
     width: 0;
@@ -1197,7 +1207,7 @@ hr {
     color: #fff
 }
 
-.header-area .main-header .main-menu ul li:hover>a::after {
+.header-area .main-header .main-menu ul li:hover>a::before {
     left: auto;
     right: auto;
     width: 100%;
@@ -1237,7 +1247,7 @@ hr {
     text-transform: capitalize
 }
 
-.header-area .main-header .main-menu ul ul.submenu>li>a::after {
+.header-area .main-header .main-menu ul ul.submenu>li>a::before {
     position: unset
 }
 
@@ -1366,11 +1376,11 @@ hr {
 }
 
 .slider-bg1 {
-    background-image: url(../img/hero/h1_hero1.jpg)
+    background-image: url(../img/hero/h1_service.jpg)
 }
 
 .slider-bg2 {
-    background-image: url(../img/hero/h1_hero2.jpg)
+    background-image: url(../img/hero/h1.jpg)
 }
 
 .slider-bg3 {
@@ -1378,14 +1388,14 @@ hr {
 }
 
 .slider-bg4 {
-    background-image: url(../img/hero/h1_about.jpg)
+    background-image: url(../img/hero/prestigious.jpg)
 }
 
 .slider-bg6 {
-    background-image: url(../img/hero/h1_service.jpg)
+    background-image: url(../img/hero/prestigious.jpg)
 }
 .slider-bg5 {
-    background-image: url(../img/hero/h1_contact.jpg)
+    background-image: url(../img/hero/prestigious.jpg)
 }
 
 .slider-area {
@@ -2170,7 +2180,7 @@ hr {
 }
 
 .visit-tailor-area .tailor-offers {
-    background-image: url(../img/gallery/video-bg.jpg);
+    background-image: url(../img/gallery/boost.webp);
     background-size: 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -2343,6 +2353,11 @@ hr {
     font-weight: 300
 }
 
+.imgwidth a img {
+    width: 100% !important;
+}
+
+/*
 .footer-area .footer-form {
     margin-top: 10px
 }
@@ -2365,6 +2380,8 @@ hr {
 .footer-area .footer-form form input:placeholder {
     color: #fff
 }
+
+
 
 .footer-area .footer-form form .form-icon button {
     color: #fff;
@@ -2543,8 +2560,10 @@ ul.footer-social li a i {
     -ms-transition: all .4s ease-out 0s;
     -o-transition: all .4s ease-out 0s;
     transition: all .4s ease-out 0s;
-    width: 100%
+    width: 40%
 }
+
+
 
 .home-blog .single-blogs .blog-img .blog-btn {
     color: #1E1E1E;
@@ -4624,6 +4643,7 @@ b,sup,sub,u,del {
 .form-select .nice-select::after {
     right: 20px
 }
+*/
 
 .mt-10 {
     margin-top: 10px
@@ -4761,17 +4781,19 @@ margin-bottom: 10px;
 }
 
 .button {
+margin-left: 0;
 border: none;
 padding: 8px 12px;
 background-color: #ffffff;
 color: black;
-border-bottom: 2px solid black;
+border: 2px solid black;
+width: 200px;
 }
 
 .button:hover {
     cursor: pointer;
-    border-bottom: 2px solid #ffffff;
-    background-color: black;
+    border: 2px solid #ffffff;
+    background-color: #02cefc;
     color: #ffffff;
 
 }

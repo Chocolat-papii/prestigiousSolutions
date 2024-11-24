@@ -263,11 +263,19 @@ button:focus {
     outline: -webkit-focus-ring-color auto 5px
 }
 
-button,input,select,textarea {
-    margin: 0;
+ input, select, textarea {
+    margin-top: 12px;
     font-family: inherit;
     font-size: inherit;
-    line-height: inherit
+    line-height: inherit;
+    border: 0;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    color: black;
+    border-bottom: 2px solid #000000;
+    background-color: #ffffff;
+    box-sizing: border-box; /* Includes padding in width calculation */
 }
 
 button,select {
@@ -297,6 +305,15 @@ select {
 textarea {
     resize: vertical
 }
+
+.rightpad {
+    padding-right: 0;
+}
+
+.leftpad {
+    padding-left: 0;
+}
+
 
 fieldset {
     min-width: 0;
@@ -1812,3 +1829,68 @@ textarea.form-control {
 }
 
 /*# sourceMappingURL=bootstrap.min.css.map */
+
+  
+.form {
+    max-width: 500px; /* Set max width of the form */
+    margin: 20px auto;   /* Center the form horizontally */
+    padding: 18px;
+    
+    }
+    
+    .form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+    
+    }
+    
+    .form input,
+    .form textarea {
+    border: 0;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    color: black;
+    border-bottom: 2px solid #ffffff;
+    background-color: #ffffff;
+    box-sizing: border-box; /* Includes padding in width calculation */
+    }
+    
+    
+    .form textarea {
+    border-bottom: 2px solid black;
+    min-height: 100px; /* Set a minimum height for the textarea */
+    }
+    
+    .form input:valid,
+    .form textarea:valid {
+    border-color: black;
+    }
+    
+    .form input:invalid,
+    .form textarea:invalid {
+    border-color: rgb(156, 156, 156);
+    }
+    
+    
+    .form .form-group {
+    margin-bottom: 10px;
+    }
+    
+    .button {
+    border: none;
+    padding: 8px 12px;
+    background-color: #ffffff;
+    color: black;
+    border-bottom: 2px solid black;
+    }
+    
+    .button:hover {
+        cursor: pointer;
+        border-bottom: 2px solid #ffffff;
+        background-color: black;
+        color: #ffffff;
+    
+    }

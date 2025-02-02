@@ -1023,6 +1023,24 @@ hr {
     padding: 4px 20px !important
 }
 
+.red-btnx {
+    color: #1E1E1E;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 16px;
+    padding: 8px 12px;
+    border: 2px solid#000;
+    border-radius: 35px;
+    background-color: #fff;
+}
+
+.red-btnx:hover {
+    color: #fff;
+    background-color: #112d4e;
+
+}
+
+
 .red-btn {
     color: #1E1E1E;
     font-weight: 400;
@@ -2353,11 +2371,12 @@ hr {
     font-weight: 300
 }
 
-.imgwidth a img {
+.imgwidth img {
     width: 100% !important;
+    
 }
 
-/*
+
 .footer-area .footer-form {
     margin-top: 10px
 }

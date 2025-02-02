@@ -540,13 +540,14 @@
                         <h2 class="contact-title">Get in Touch</h2>
                     </div>
                     <div class="col-lg-8 mb-4 rightpad">
-                        <form name="contact" method="POST" NETLIFY data-netlify="true" action="/thank-you">
+                        <form name="contact" method="POST" NETLIFY data-netlify-recaptcha="true" action="/thank-you">
                             <input type="text" name="name" placeholder="Contact Person" required />
                             <input type="text" name="Company-name" placeholder="Company Name" required />
                             <input type="tel" name="phone" placeholder="Business Phone Number" required />
                             <input type="email" name="email" placeholder="Business Email Address" required />
                             <textarea name="message" placeholder="Briefly describe the services you are interested in."
                                 required></textarea>
+                                <div data-netlify-recaptcha="true"></div>
                             <button class="red-btnx" type="submit">Send Message</button>
                         </form>
                     </div><br><br>

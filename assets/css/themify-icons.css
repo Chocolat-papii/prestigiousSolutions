@@ -25,8 +25,7 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 .ti-tablet:before {
-	content: "\e609";
-}
+	content: "\e6a i
 .ti-arrow-right:before {
 	content: "\e628";
 }

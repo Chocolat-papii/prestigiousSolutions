@@ -4814,5 +4814,8 @@ width: 200px;
     border: 2px solid #ffffff;
     background-color: #02cefc;
     color: #ffffff;
+}
 
+.safe {
+    height: 14px;
 }

@@ -4726,31 +4726,6 @@ word-break: break-word !important;
   
 /* ----- FORM ----- */
 
-
-@media (max-width: 600px) {
-    .form {
-        width: 100%;
-      padding: 10px;
-    }
-    
-    .form input,
-    .form textarea {
-      font-size: 18px;
-    }
-    
-    .form .button {
-      font-size: 14px;
-    }
-
-    .mail {
-        font-size: 14px;
-    }
-
-    footer p {
-        font-size: 11px;
-    }
-  }
-  
 .form {
 max-width: 500px; /* Set max width of the form */
 margin: 20px auto;   /* Center the form horizontally */
@@ -4816,6 +4791,11 @@ width: 200px;
     color: #ffffff;
 }
 
-.mx-auto {
-    margin: 0 auto;
-}
+
+/*
+@media (max-width: 600px) {
+    .mail {
+        font-size: 14px;
+    }
+  }
+  

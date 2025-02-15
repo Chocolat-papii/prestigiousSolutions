@@ -4816,3 +4816,6 @@ width: 200px;
     color: #ffffff;
 }
 
+.mx-auto {
+    margin: 0 auto;
+}

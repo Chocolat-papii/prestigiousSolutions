@@ -1036,7 +1036,8 @@ hr {
 
 .red-btnx:hover {
     color: #fff;
-    background-color: #112d4e;
+    background-color: #02cefc;
+    border: 2px solid#fff;
 
 }
 

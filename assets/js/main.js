@@ -119,7 +119,7 @@
       speed: 3000,
       smartSpeed:2000,
       nav:true,
-      navText:['<i class="ti-arrow-left"></i>','<i class="ti-arrow-right"></i>'],
+      navText:['<i class="fas fa-arrow-left"></i>','<i class="fas fa-arrow-right"></i>'],
       dots: false,
       margin: 0,
 
@@ -157,7 +157,7 @@
         speed: 3000,
         smartSpeed:2000,
         nav:true,
-        navText:['<i class="ti-arrow-left"></i>','<i class="ti-arrow-right"></i>'],
+        navText:['<i class="fas fa-arrow-left"></i>','<i class="fas fa-arrow-right"></i>'],
         dots: false,
         margin: 0,
 
@@ -190,8 +190,8 @@ $('.testi-active').slick({
   autoplay: true,
   speed: 400,
   arrows: true,
-  prevArrow: '<button type="button" class="slick-prev"><i class="ti-angle-left"></i></button>',
-  nextArrow: '<button type="button" class="slick-next"><i class="ti-angle-right"></i></button>',
+  prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-angle-left"></i></button>',
+  nextArrow: '<button type="button" class="slick-next"><i class="fas fa-angle-right"></i></button>',
   slidesToShow: 4,
   slidesToScroll: 1,
   responsive: [
@@ -260,10 +260,10 @@ $('.testi-active').slick({
     new WOW().init();
 
 // 11. ---- Mailchimp js --------//  
-    function mailChimp() {
-      $('#mc_embed_signup').find('form').ajaxChimp();
-    }
-    mailChimp();
+    // function mailChimp() {
+    //   $('#mc_embed_signup').find('form').ajaxChimp();
+    // }
+    // mailChimp();
 
 
 // 12 Pop Up Img
@@ -294,3 +294,39 @@ $('.testi-active').slick({
 
 
 })(jQuery);
+
+// Smooth, time-based counter + scroll trigger (works for one or many .counter elements)
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".counter");
+
+  const animate = (el, target, duration = 1500) => {
+    const startTime = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const value = Math.floor(progress * target);
+      el.textContent = value.toLocaleString(); // adds commas like 5,000
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const el = entry.target;
+      if (el.dataset.animated === "true") return; // run once
+
+      const target = Number(el.dataset.target ?? el.textContent ?? 0);
+      const duration = Number(el.dataset.duration ?? 1500);
+
+      animate(el, target, duration);
+      el.dataset.animated = "true";
+      io.unobserve(el);
+    });
+  }, { threshold: 0.2 }); // start when ~20% visible
+
+  counters.forEach((el) => io.observe(el));
+});

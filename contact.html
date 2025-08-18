@@ -24,14 +24,12 @@
     <link rel="stylesheet" href="assets/css/slicknav.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script
-        nonce="1b334426-f4b2-445f-bd3a-bd887c6f1254">try { (function (w, d) { !function (j, k, l, m) { if (j.zaraz) console.error("zaraz is loaded twice"); else { j[l] = j[l] || {}; j[l].executed = []; j.zaraz = { deferred: [], listeners: [] }; j.zaraz._v = "5796"; j.zaraz.q = []; j.zaraz._f = function (n) { return async function () { var o = Array.prototype.slice.call(arguments); j.zaraz.q.push({ m: n, a: o }) } }; for (const p of ["track", "set", "debug"]) j.zaraz[p] = j.zaraz._f(p); j.zaraz.init = () => { var q = k.getElementsByTagName(m)[0], r = k.createElement(m), s = k.getElementsByTagName("title")[0]; s && (j[l].t = k.getElementsByTagName("title")[0].text); j[l].x = Math.random(); j[l].w = j.screen.width; j[l].h = j.screen.height; j[l].j = j.innerHeight; j[l].e = j.innerWidth; j[l].l = j.location.href; j[l].r = k.referrer; j[l].k = j.screen.colorDepth; j[l].n = k.characterSet; j[l].o = (new Date).getTimezoneOffset(); if (j.dataLayer) for (const w of Object.entries(Object.entries(dataLayer).reduce(((x, y) => ({ ...x[1], ...y[1] })), {}))) zaraz.set(w[0], w[1], { scope: "page" }); j[l].q = []; for (; j.zaraz.q.length;) { const z = j.zaraz.q.shift(); j[l].q.push(z) } r.defer = !0; for (const A of [localStorage, sessionStorage]) Object.keys(A || {}).filter((C => C.startsWith("_zaraz_"))).forEach((B => { try { j[l]["z_" + B.slice(7)] = JSON.parse(A.getItem(B)) } catch { j[l]["z_" + B.slice(7)] = A.getItem(B) } })); r.referrerPolicy = "origin"; r.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(j[l]))); q.parentNode.insertBefore(r, q) };["complete", "interactive"].includes(k.readyState) ? zaraz.init() : j.addEventListener("DOMContentLoaded", zaraz.init) } }(w, d, "zarazData", "script"); window.zaraz._p = async bv => new Promise((bw => { if (bv) { bv.e && bv.e.forEach((bx => { try { const by = d.querySelector("script[nonce]"), bz = by?.nonce || by?.getAttribute("nonce"), bA = d.createElement("script"); bz && (bA.nonce = bz); bA.innerHTML = bx; bA.onload = () => { d.head.removeChild(bA) }; d.head.appendChild(bA) } catch (bB) { console.error(`Error executing script: ${bx}\n`, bB) } })); Promise.allSettled((bv.f || []).map((bC => fetch(bC[0], bC[1])))) } bw() })); zaraz._p({ "e": ["(function(w,d){})(window,document)"] }); })(window, document) } catch (e) { throw fetch("/cdn-cgi/zaraz/t"), e; };</script>
-</head>
+    </head>
 
 <body>
     <header>
@@ -70,7 +68,7 @@
     <main>
 
         <div class="slider-area">
-            <div class="single-slider slider-bg5 hero-overly02 slider-height2 d-flex align-items-end">
+            <div class="single-slider slider-bg5 hero-overly slider-height2 d-flex align-items-end">
                 <div class="container">
                     <div class="row">
                         <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10">
@@ -543,23 +541,29 @@
                     </section>-->
         <section class="contact-section">
             <div class="container">
-                <div class="leftpad justify-content-center align-items-start">
+                <div class="leftpad justify-content-center align-items-start mb-60">
                     <h1>Get in Touch with Prestigious Solutions</h1>
                     <p>We're here to assist you with top-tier tech solutions and office essentials. Let us know how we can help!</p>
-                    <br>
                 </div>
-                <div class="row  leftpad">
-                  <div class="col-lg-5 offset-lg-1 leftpad align-items-center justify-content-center">
+                <div class="mb-30 mt-10"></div>
+                <div class="row  leftpad mt-10">
+                  <div class="col-lg-6  leftpad align-items-center justify-content-start">
                         
-                        <h2 class="contact-title">Contact</h2>
-                        
+                        <h2 class="contact-title">Operating hours:</h2>
                         <div class="media contact-info">
-                            <span class="contact-info__icon"><i class="fas fa-map-marker"></i></span>
+                            <span class="contact-info__icon"><i class="fas fa-clock"></i></span>
                             <div class="media-body">
-                                <h3>Midrand, Johannesburg</h3>
-                                <p>Mon to Fri 9am to 5pm</p>
+                                <h3>Mon - Thur:</h3>
+                                <p> 08h00 - 16h00</p>
+                                <h3>Friday:</h3>
+                                <p> 08h00 - 13h00</p>
+                                <h3>Sat - Sun:</h3>
+                                <p>Closed.</p>
+                                <h3>Public Holidys:</h3>
+                                <p>Closed.</p>
                             </div>
                         </div>
+                        <h2 class="contact-title">Contact</h2>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="fas fa-phone"></i></span>
                             <div class="media-body">
@@ -576,6 +580,13 @@
                                 <p>Get assistance.</p>
                             </div>
                         </div>
+                         <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="fas fa-location-dot"></i></span>
+                            <div class="media-body">
+                                <h3>Midrand, Johannesburg</h3>
+                                <p>1685</p>
+                            </div>
+                        </div>
                     </div> <br>
                     <div class="col-lg-6 mb-4 rightpad">
                         <div class="col-12">
@@ -588,10 +599,15 @@
                             <input type="email" name="email" placeholder="Business Email Address" required />
                             <textarea name="message" placeholder="Briefly describe your enquiry or the services you are interested in."
                                 required></textarea>
-
+                            <label for="document">Any relevant document</label>
+                                                        <input type="file" name="document" placeholder=""  />
                             <button class="red-btnx" type="submit">Send Message</button>
                         </form>
+                        <div class="mt-30">
+                        <p><em>We’ll respond within 3 business days. No commitment required.</em></p>
                     </div>
+                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -619,13 +635,14 @@
 
                                     <ul class="footer-social">
                                         <ul class="footer-social">
-                                            <li><a
-                                                    href="https://www.linkedin.com/company/prestigious-solutions-pty-ltd/posts/?feedView=all"><i
+                                            <li><a href="https://www.linkedin.com/company/prestigious-solutions-pty-ltd/posts/?feedView=all" target="_blank"><i
                                                         class="fa-brands fa-linkedin-in"></i></a></li>
-                                            <li><a href="https://www.facebook.com/profile.php?id=61566337820545"><i
+                                            <li><a href="https://www.facebook.com/profile.php?id=61566337820545" target="_blank"><i
                                                         class="fa-brands fa-facebook-f"></i></a></li>
-                                            <li><a href="x.com/prestigious2024"><i
+                                            <li><a href="https://x.com/prestigious_pty" target="_blank"><i
                                                         class="fa-brands fa-x-twitter"></i></a></li>
+                                            <li><a href="https://www.tiktok.com/@prestigious.solut?_t=ZS-8yyjYd4fIhz&_r=1" target="_blank"><i
+                                                        class="fa-brands fa-tiktok"></i></a></li>
                                             <!--<li><a href="instagram.com/"><i class="fa-brands fa-instagram"></i></a></li>-->
                                         </ul>
                                 </div>
@@ -651,7 +668,7 @@
                                     <ul>
                                         <li><a href="terms.html">T's & C's</a></li>
                                         <li><a href="privacy.html">Privacy Policy</a></li>
-                                        <!--<li><a href="about.html">B-BBBEE Credentials</a></li>-->
+                                        <li><a  onclick="window.open('./assets/B-BBEE Certificate.pdf', '_blank')" href="">B-BBEE Credentials</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -752,11 +769,6 @@
 
         gtag('config', 'UA-23581568-13');
     </script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
-        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
-        data-cf-beacon='{"rayId":"8bfed2e28cb10398","serverTiming":{"name":{"cfExtPri":true,"cfL4":true}},"version":"2024.8.0","token":"cd0b4b3a733644fc843ef0b185f98241"}'
-        crossorigin="anonymous"></script>
 </body>
 
 </html>

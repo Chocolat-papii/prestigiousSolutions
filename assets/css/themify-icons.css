@@ -25,12 +25,13 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 .ti-tablet:before {
-	content: "\e6a i
+  content: "\e6a1";
+}
 .ti-arrow-right:before {
-	content: "\e628";
+	content: "→";
 }
 .ti-arrow-left:before {
-	content: "\e629";
+	content: "←";
 }
 .ti-angle-right:before {
 	content: "\e649";

@@ -273,7 +273,7 @@ button:focus {
     padding: 10px;
     margin-bottom: 12px;
     color: black;
-    border-bottom: 2px solid #000000;
+    border-bottom: 2px solid #c8b568;
     background-color: #ffffff;
     box-sizing: border-box; /* Includes padding in width calculation */
 }
@@ -1740,6 +1740,10 @@ textarea.form-control {
     justify-content: space-between!important
 }
 
+.justify-content-evenly {
+    justify-content: space-evenly!important
+}
+
 .align-items-end {
     align-items: flex-end!important
 }
@@ -1853,7 +1857,7 @@ textarea.form-control {
     padding: 10px;
     margin-bottom: 12px;
     color: black;
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid #c8b568;
     background-color: #ffffff;
     box-sizing: border-box; /* Includes padding in width calculation */
     }

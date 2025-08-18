@@ -6,6 +6,10 @@
     background: #ebebeb;
 }
 
+.section-bg3 {
+    background: #c8b568;
+}
+
 body {
     font-family: "Jost",sans-serif;
     font-weight: normal;
@@ -78,15 +82,13 @@ body {
 .abt-list-divs {
     margin: 0 40px;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     gap: 15px;
     flex-wrap:wrap
     
 }
 
-.abt-list {
-    width: 500px
-}
+
 
 
 
@@ -696,7 +698,7 @@ hr {
 }
 
 .btn {
-    background: #1E1E1E;
+    background: #c8b568;
     font-family: "Oswald",sans-serif;
     text-transform: inherit !important;
     padding: 22px 32px;
@@ -717,14 +719,36 @@ hr {
     overflow: hidden
 }
 
-.btn::before {
+.btn2 {
+    background: #000000;
+    font-family: "Oswald",sans-serif;
+    text-transform: inherit !important;
+    padding: 22px 32px;
+    color: #fff !important;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    border-radius: 0px;
+    line-height: 1;
+    line-height: 0;
+    cursor: pointer;
+    -moz-user-select: none;
+    transition: color 0.4s linear;
+    position: relative;
+    z-index: 1;
+    border: 0;
+    overflow: hidden
+}
+
+.btn::before, .btn2::before {
     content: "";
     position: absolute;
     left: 0;
     top: 0;
     width: 102%;
     height: 102%;
-    background: #ec583a;
+    background: #02cefc;
     z-index: 1;
     border-radius: 0px;
     transition: transform 0.5s;
@@ -743,7 +767,7 @@ hr {
     color: #fff !important
 }
 
-.btn:hover::before {
+.btn:hover::before, .btn2:hover::before {
     transform: scaleX(1);
     z-index: -1
 }
@@ -790,6 +814,11 @@ hr {
     margin-left: 5px;
     display: inline-block
 }
+
+.margin-left-1 {
+    margin-left: 8px;
+}
+
 
 .hero-btn {
     color: #fff;
@@ -1339,7 +1368,7 @@ hr {
 }
 
 .slider-height {
-    height: 990px;
+    height: 100vh;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover
@@ -1395,15 +1424,15 @@ hr {
 }
 
 .slider-bg1 {
-    background-image: url(../img/hero/h1_service.jpg)
+    background-image: url(../img/hero/ict-euip.jpg)
 }
 
 .slider-bg2 {
-    background-image: url(../img/hero/h1.jpg)
+    background-image: url(../img/hero/medical-equip.jpg)
 }
 
 .slider-bg3 {
-    background-image: url(../img/hero/h1_about.jpg)
+    background-image: url(../img/hero/warehouse.jpg)
 }
 
 .slider-bg4 {
@@ -1440,7 +1469,7 @@ hr {
 }
 
 .slider-area .hero-caption h1 {
-    font-size: 100px;
+    font-size: 65px;
     font-weight: 600;
     margin-bottom: 50px;
     color: #fff;
@@ -1449,13 +1478,13 @@ hr {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .slider-area .hero-caption h1 {
-        font-size:75px
+        font-size:65px
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .slider-area .hero-caption h1 {
-        font-size:75px
+        font-size:65px
     }
 }
 
@@ -1762,25 +1791,7 @@ hr {
 .hero-overly::before {
     position: absolute;
     content: "";
-    background-color: rgba(10,22,18,0.6);
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1
-}
-
-.hero-overly02 {
-    position: relative;
-    z-index: 0
-}
-
-.hero-overly02::before {
-    position: absolute;
-    content: "";
-    background-color: rgba(84,84,84,0.6);
+    background-color: rgba(15, 31, 26, 0.482);
     width: 100%;
     height: 100%;
     left: 0;
@@ -2199,14 +2210,26 @@ hr {
 }
 
 .visit-tailor-area .tailor-offers {
-    background-image: url(../img/gallery/boost.webp);
+    background-image: url(../img/gallery/client-success.jpg);
     background-size: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 850px;
+    height: 450px;
     width: 50%
 }
+
+ .tailor-offers2 {
+    background-image: url(../img/gallery/procurment-meeting.jpg);
+    background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 350px;
+}
+
+
+
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .visit-tailor-area .tailor-offers {
@@ -2334,7 +2357,7 @@ hr {
 }
 
 .footer-area {
-    background: #1E1E1E
+    background: #112d4e;
 }
 
 .footer-area .footer-pera p {
@@ -2544,6 +2567,10 @@ ul.footer-social li a i {
     margin-bottom: 25px;
     width: 100%;
     position: relative
+}
+
+.blog-height {
+    height: 200px;
 }
 
 .home-blog .single-blogs .blog-img.blog-img2 {
@@ -3495,7 +3522,7 @@ ul.footer-social li a i {
 }
 
 .contact-info__icon i,.contact-info__icon span {
-    color: #8f9195;
+    color: #c8b568;
     font-size: 27px
 }
 
@@ -4749,14 +4776,14 @@ width: 100%;
 padding: 10px;
 margin-bottom: 12px;
 color: black;
-border-bottom: 2px solid #ffffff;
+border-bottom: 2px solid #c8b568;
 background-color: #ffffff;
 box-sizing: border-box; /* Includes padding in width calculation */
 }
 
 
 .form textarea {
-border-bottom: 2px solid black;
+border-bottom: 2px solid #c8b568;
 min-height: 100px; /* Set a minimum height for the textarea */
 }
 
@@ -4798,5 +4825,140 @@ width: 200px;
     .mail {
         font-size: 14px;
     }
+  }*/
+.d-flex {
+    display: flex;
+}
+
+.lead {
+    font-size: 18px;
+}
+
+  .mx-auto {
+    margin: 0 auto;
   }
-  
+
+  .wid-fit-content {
+    width: fit-content;
+  }
+
+.back-block {
+  position: relative;       /* Needed for ::before positioning */
+  display: inline-block;    /* Shrink to fit content width */
+  z-index: 1;               /* Ensure text stays on top */
+}
+
+.back-block::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    bottom: -20%;                  /* Center vertically */
+    width: 90%;                /* Cover 80% of the text width */
+    height: 2px;              /* Slightly taller than the text */
+    background-color: #c8b568;   /* Change to desired color */
+    z-index: -1; 
+}
+
+.p-1 {
+    padding: 10px;
+}
+
+.p-2 {
+    padding: 30px;
+}
+
+.f58 {
+    font-size: 58px;
+}
+
+
+/* ---- nav drop dowwn ----*/
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #c8b568;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content li:hover {
+    background: #9a8b51;
+    min-width: 195px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+.pa {
+    color: #9a8b51;
+}
+
+.pa:hover {
+    color: #02cefc;
+}
+
+.py-1 {
+    padding: 10px 0;
+}
+
+.py-2 {
+    padding: 25px 0;
+}
+
+.py-3 {
+    padding: 35px 0;
+}
+
+.py-4 {
+    padding: 45px 0;
+}
+
+.py-5 {
+    padding: 55px 0;
+}
+
+.pb-5 {
+    padding: 0 0 65px 0;
+}
+
+span .text-light {
+    color: #fff;
+}
+
+.tailor-offers3 {
+     background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 350px;
+}
+
+a .btn span .pointers-code {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.pdf-view {
+    background-color: #02cefc;
+}
+
+.m-1 {
+    margin: 10px;
+}

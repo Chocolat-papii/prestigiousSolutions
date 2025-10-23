@@ -1,0 +1,191 @@
+<!-- Zoho Form Modal (lazy-load) -->
+<div id="zohoFormOverlay" class="ps-zoho-overlay" style="display:none;">
+  <div class="ps-zoho-backdrop" data-zoho-close></div>
+
+  <div class="ps-zoho-dialog" role="dialog" aria-modal="true" aria-label="Service Requirement Form" tabindex="-1">
+    <div class="container py-3">
+      <!-- header -->
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="m-0">Service Requirement Form</h5>
+        <button type="button" class="btn btn-sm btn-outline-secondary" data-zoho-close aria-label="Close form">✕ Close</button>
+      </div>
+
+      <!-- content -->
+      <div id="zf_div_tRo7ehwUusyZbl0x4pVO6ghpZAeZ2lCIetII2RJ2_O4" class="ps-zoho-frameholder"></div>
+
+      <!-- footer -->
+      <div class="text-end mt-3">
+        <button type="button" class="btn btn-secondary" data-zoho-close>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+(function(){
+  // ---- Config ----
+  const OVERLAY_ID = 'zohoFormOverlay';
+  const DIALOG_SEL = '.ps-zoho-dialog';
+  const ZF_DIV_ID  = 'zf_div_tRo7ehwUusyZbl0x4pVO6ghpZAeZ2lCIetII2RJ2_O4';
+  const ZOHO_SRC   = 'https://forms.zohopublic.com/supportprestigiou1/form/ITTransformationRequirements/formperma/tRo7ehwUusyZbl0x4pVO6ghpZAeZ2lCIetII2RJ2_O4?zf_rszfm=1';
+
+  let iframeLoaded = false;
+  let lastFocused = null;
+
+  // Simple focus trap
+  function trapFocus(container, e){
+    if (e.key !== 'Tab') return;
+    const focusables = container.querySelectorAll(
+      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+    );
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last  = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  }
+
+  function openZohoModal() {
+    const overlay = document.getElementById(OVERLAY_ID);
+    const dialog  = overlay.querySelector(DIALOG_SEL);
+    if (!overlay || !dialog) return;
+
+    lastFocused = document.activeElement;
+
+    // Show overlay
+    overlay.style.display = 'block';
+    requestAnimationFrame(()=> overlay.classList.add('is-open'));
+
+    // Prevent body scroll, but allow overlay scroll
+    document.body.style.overflow = 'hidden';
+
+    // Set ARIA correctly
+    // (We do NOT use aria-hidden on the overlay; dialog already has aria-modal="true")
+
+    // Move focus to dialog
+    dialog.setAttribute('tabindex','-1');
+    dialog.focus({preventScroll:true});
+
+    // Lazy-load Zoho iframe
+    if (!iframeLoaded) {
+      injectZohoIframe();
+      iframeLoaded = true;
+    }
+  }
+
+  function closeZohoModal() {
+    const overlay = document.getElementById(OVERLAY_ID);
+    if (!overlay) return;
+
+    overlay.classList.remove('is-open');
+    setTimeout(()=>{ overlay.style.display='none'; }, 200);
+
+    // Restore body scroll
+    document.body.style.overflow = '';
+
+    // Return focus
+    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+  }
+
+  // Lazy-inject Zoho iframe (adapted from Zoho snippet)
+  function injectZohoIframe() {
+    try {
+      var f = document.createElement("iframe");
+      var ifrmSrc = ZOHO_SRC;
+
+      try{
+        if ( typeof ZFAdvLead != "undefined" && typeof zfutm_zfAdvLead != "undefined" ) {
+          for( var prmIdx = 0 ; prmIdx < ZFAdvLead.utmPNameArr.length ; prmIdx ++ ) {
+            var utmPm = ZFAdvLead.utmPNameArr[ prmIdx ];
+            utmPm = ( ZFAdvLead.isSameDomian && ( ZFAdvLead.utmcustPNameArr.indexOf(utmPm) == -1 ) ) ? "zf_" + utmPm : utmPm;
+            var utmVal = zfutm_zfAdvLead.zfautm_gC_enc( ZFAdvLead.utmPNameArr[ prmIdx ] );
+            if ( typeof utmVal !== "undefined" && utmVal != "" ) {
+              ifrmSrc += (ifrmSrc.indexOf('?') > 0 ? '&' : '?') + utmPm + '=' + utmVal;
+            }
+          }
+        }
+        if ( typeof ZFLead !== "undefined" && typeof zfutm_zfLead !== "undefined" ) {
+          for( var prmIdx2 = 0 ; prmIdx2 < ZFLead.utmPNameArr.length ; prmIdx2 ++ ) {
+            var utmPm2 = ZFLead.utmPNameArr[ prmIdx2 ];
+            var utmVal2 = zfutm_zfLead.zfutm_gC_enc( ZFLead.utmPNameArr[ prmIdx2 ] );
+            if ( typeof utmVal2 !== "undefined" && utmVal2 != "" ){
+              ifrmSrc += (ifrmSrc.indexOf('?') > 0 ? '&' : '?') + utmPm2 + '=' + utmVal2;
+            }
+          }
+        }
+      }catch(e){/* ignore utm issues */ }
+
+      f.src = ifrmSrc;
+      f.title = 'Prestigious Solutions — Service Requirement Form';
+      f.setAttribute("aria-label", 'Prestigious Solutions - Service Requirement Form');
+      f.style.border = "none";
+      f.style.width  = "100%";
+      f.style.height = "70vh"; // baseline before resize
+
+      var holder = document.getElementById(ZF_DIV_ID);
+      if (holder) holder.appendChild(f);
+
+      // Auto-resize from Zoho postMessage
+      window.addEventListener('message', function(event){
+        var evntData = event.data;
+        if( evntData && evntData.constructor == String ){
+          var zf_ifrm_data = evntData.split("|");
+          if ( zf_ifrm_data.length == 2 || zf_ifrm_data.length == 3 ) {
+            var zf_perma = zf_ifrm_data[0];
+            var zf_ifrm_ht_nw = ( parseInt(zf_ifrm_data[1], 10) + 15 ) + "px";
+            var iframe = holder.getElementsByTagName("iframe")[0];
+            if ( (iframe.src).indexOf('formperma') > 0 && (iframe.src).indexOf(zf_perma) > 0 ) {
+              var prevIframeHeight = iframe.style.height;
+              var zf_tout = false;
+              if( zf_ifrm_data.length == 3 ) {
+                iframe.scrollIntoView();
+                zf_tout = true;
+              }
+              if ( prevIframeHeight != zf_ifrm_ht_nw ) {
+                if( zf_tout ) {
+                  setTimeout(function(){ iframe.style.height = zf_ifrm_ht_nw; },500);
+                } else {
+                  iframe.style.height = zf_ifrm_ht_nw;
+                }
+              }
+            }
+          }
+        }
+      }, false);
+    } catch(e) {
+      console.error('Zoho iframe injection failed:', e);
+    }
+  }
+
+  // Public open
+  window.openZohoFormModal = openZohoModal;
+
+  // Delegated clicks
+  document.addEventListener('click', function(e){
+    const openBtn = e.target.closest('[data-zoho-open]');
+    const closeBtn = e.target.closest('[data-zoho-close]');
+    if (openBtn) { e.preventDefault(); openZohoModal(); }
+    if (closeBtn) { e.preventDefault(); closeZohoModal(); }
+  });
+
+  // ESC close + focus trap
+  document.addEventListener('keydown', function(e){
+    const overlay = document.getElementById(OVERLAY_ID);
+    if (!overlay || overlay.style.display === 'none') return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeZohoModal();
+    } else {
+      const dialog = overlay.querySelector(DIALOG_SEL);
+      if (dialog) trapFocus(dialog, e);
+    }
+  });
+})();
+</script>
+

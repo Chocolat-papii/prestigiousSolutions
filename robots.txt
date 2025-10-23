@@ -1,4 +1,14 @@
-User-agent: *
-Disallow:
+# robots.txt for https://prestigioussolutions.co.za
 
+User-agent: *
+Disallow: /admin/
+Disallow: /config/
+Disallow: /node_modules/
+Disallow: /assets/private/
+Allow: /
+
+# Crawl-delay helps prevent server overload (optional)
+Crawl-delay: 5
+
+# Sitemap location
 Sitemap: https://prestigioussolutions.co.za/sitemap.xml

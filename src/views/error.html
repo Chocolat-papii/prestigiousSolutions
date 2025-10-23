@@ -1,0 +1,6 @@
+<h1><%= title || 'Error' %></h1>
+<p><%= message || 'Something went wrong.' %></p>
+
+<% if (error && error.stack) { %>
+  <pre><%= error.stack %></pre>
+<% } %>

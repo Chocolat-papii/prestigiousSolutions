@@ -19,47 +19,42 @@ const isProd = process.env.NODE_ENV === 'production';
 
 app.use(
   helmet({
-    // Heroku + third-party iframes often need these disabled
     crossOriginEmbedderPolicy: false,
     crossOriginResourcePolicy: { policy: 'cross-origin' },
 
-    // Keep XSS, noSniff, HSTS, etc. (Helmet defaults)
-    // Configure CSP explicitly so Zoho is allowed:
-    contentSecurityPolicy: false
+    contentSecurityPolicy: isProd
       ? {
           useDefaults: true,
           directives: {
             defaultSrc: ["'self'"],
-            // Zoho loads scripts from zohopublic + zohocdn; may inject inline
+
+            // allow inline scripts/styles for now so your static pages + widgets work
             scriptSrc: [
               "'self'",
-              "'unsafe-inline'",           // remove later if you add nonces
-              "'unsafe-eval'",             // some widgets need this
+              "'unsafe-inline'",
+              "'unsafe-eval'",
               'https://forms.zohopublic.com',
               'https://*.zohocdn.com',
             ],
             styleSrc: [
               "'self'",
-              "'unsafe-inline'",           // in case Zoho injects inline styles
+              "'unsafe-inline'",
               'https://*.zohocdn.com',
+              'https://fonts.googleapis.com',
             ],
+
+            // your error shows only 'self data:'; expand to https + blobs so images/CSS fonts load
             imgSrc: ["'self'", 'data:', 'https:', 'blob:'],
-            connectSrc: [
-              "'self'",
-              'https://forms.zohopublic.com',
-              'https://*.zohocdn.com',
-            ],
-            frameSrc: [
-              "'self'",
-              'https://forms.zohopublic.com', // allow the Zoho iframe
-            ],
-            // Your site doesn’t need to be framed by others:
-            frameAncestors: ["'self'"],
+            fontSrc: ["'self'", 'data:', 'https:', 'blob:', 'https://fonts.gstatic.com'],
+            connectSrc: ["'self'", 'https://forms.zohopublic.com', 'https://*.zohocdn.com'],
+            frameSrc: ["'self'", 'https://forms.zohopublic.com'],
+            mediaSrc: ["'self'", 'https:', 'data:', 'blob:'],
             objectSrc: ["'none'"],
-            upgradeInsecureRequests: [],   // keep HTTPS everywhere
+            frameAncestors: ["'self'"],   // your site shouldn’t be framed by others
+            upgradeInsecureRequests: [],  // keep everything HTTPS
           },
         }
-      : false, // turn off CSP in development for easier debugging
+      : false,
   })
 );
 

@@ -12,10 +12,60 @@ const notFound = require('./src/middlewares/notFound');
 
 const app = express();
 
+// trust proxy (so HTTPS + host redirects work behind Heroku’s proxy)
+app.set('trust proxy', 1);
+
 // Security (dev vs prod)
-app.use(helmet({
-  contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false
-}));
+const helmet = require('helmet');
+
+const isProd = process.env.NODE_ENV === 'production';
+
+app.use(
+  helmet({
+    // Heroku + third-party iframes often need these disabled
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+
+    // Keep XSS, noSniff, HSTS, etc. (Helmet defaults)
+    // Configure CSP explicitly so Zoho is allowed:
+    contentSecurityPolicy: isProd
+      ? {
+          useDefaults: true,
+          directives: {
+            defaultSrc: ["'self'"],
+            // Zoho loads scripts from zohopublic + zohocdn; may inject inline
+            scriptSrc: [
+              "'self'",
+              "'unsafe-inline'",           // remove later if you add nonces
+              "'unsafe-eval'",             // some widgets need this
+              'https://forms.zohopublic.com',
+              'https://*.zohocdn.com',
+            ],
+            styleSrc: [
+              "'self'",
+              "'unsafe-inline'",           // in case Zoho injects inline styles
+              'https://*.zohocdn.com',
+            ],
+            imgSrc: ["'self'", 'data:', 'https:', 'blob:'],
+            connectSrc: [
+              "'self'",
+              'https://forms.zohopublic.com',
+              'https://*.zohocdn.com',
+            ],
+            frameSrc: [
+              "'self'",
+              'https://forms.zohopublic.com', // allow the Zoho iframe
+            ],
+            // Your site doesn’t need to be framed by others:
+            frameAncestors: ["'self'"],
+            objectSrc: ["'none'"],
+            upgradeInsecureRequests: [],   // keep HTTPS everywhere
+          },
+        }
+      : false, // turn off CSP in development for easier debugging
+  })
+);
+
 
 
 // View engine (EJS) + layouts
@@ -27,7 +77,7 @@ app.set('layout', 'layouts/main');
 
 // Static Assets
 const publicDir = path.join(__dirname, 'assets');
-app.use('/assets', express.static(publicDir, { maxAge: '3od', immutable: true }));
+app.use('/assets', express.static(publicDir, { maxAge: '30d', immutable: true }));
 
 // 2.5 Favicon (served from /public/img/favicon.ico)
 app.use(favicon(path.join(__dirname, 'favicon.ico')));
@@ -40,6 +90,22 @@ app.use(compression());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// optional: force HTTPS
+app.use((req, res, next) => {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect(301, `https://${req.hostname}${req.originalUrl}`);
+  }
+  next();
+});
+
+// optional: redirect www → apex
+app.use((req, res, next) => {
+  if (req.hostname && req.hostname.startsWith('www.')) {
+    return res.redirect(301, `https://${req.hostname.replace(/^www\./, '')}${req.originalUrl}`);
+  }
+  next();
+});
 
 
 // Routes

@@ -15,9 +15,6 @@ const app = express();
 // trust proxy (so HTTPS + host redirects work behind Heroku’s proxy)
 app.set('trust proxy', 1);
 
-// Security (dev vs prod)
-const helmet = require('helmet');
-
 const isProd = process.env.NODE_ENV === 'production';
 
 app.use(
@@ -28,7 +25,7 @@ app.use(
 
     // Keep XSS, noSniff, HSTS, etc. (Helmet defaults)
     // Configure CSP explicitly so Zoho is allowed:
-    contentSecurityPolicy: isProd
+    contentSecurityPolicy: false
       ? {
           useDefaults: true,
           directives: {

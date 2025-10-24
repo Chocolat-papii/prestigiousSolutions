@@ -15,48 +15,90 @@ const app = express();
 // trust proxy (so HTTPS + host redirects work behind Heroku’s proxy)
 app.set('trust proxy', 1);
 
+// optional: force HTTPS
+app.use((req, res, next) => {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect(301, `https://${req.hostname}${req.originalUrl}`);
+  }
+  next();
+});
+
+// optional: redirect www → apex
+app.use((req, res, next) => {
+  if (req.hostname && req.hostname.startsWith('www.')) {
+    return res.redirect(301, `https://${req.hostname.replace(/^www\./, '')}${req.originalUrl}`);
+  }
+  next();
+});
+
+
+const helmet = require('helmet');
 const isProd = process.env.NODE_ENV === 'production';
 
 app.use(
   helmet({
     crossOriginEmbedderPolicy: false,
     crossOriginResourcePolicy: { policy: 'cross-origin' },
-
     contentSecurityPolicy: isProd
       ? {
           useDefaults: true,
           directives: {
             defaultSrc: ["'self'"],
 
-            // allow inline scripts/styles for now so your static pages + widgets work
             scriptSrc: [
               "'self'",
-              "'unsafe-inline'",
+              "'unsafe-inline'",            // quick fix for inline snippets
               "'unsafe-eval'",
+              // Zoho
               'https://forms.zohopublic.com',
               'https://*.zohocdn.com',
+              // GA / GTM
+              'https://www.googletagmanager.com',
+              'https://www.google-analytics.com',
             ],
+
             styleSrc: [
               "'self'",
               "'unsafe-inline'",
+              'https://cdnjs.cloudflare.com',
               'https://*.zohocdn.com',
               'https://fonts.googleapis.com',
             ],
 
-            // your error shows only 'self data:'; expand to https + blobs so images/CSS fonts load
             imgSrc: ["'self'", 'data:', 'https:', 'blob:'],
-            fontSrc: ["'self'", 'data:', 'https:', 'blob:', 'https://fonts.gstatic.com'],
-            connectSrc: ["'self'", 'https://forms.zohopublic.com', 'https://*.zohocdn.com'],
-            frameSrc: ["'self'", 'https://forms.zohopublic.com'],
-            mediaSrc: ["'self'", 'https:', 'data:', 'blob:'],
+
+            fontSrc: [
+              "'self'", 'data:', 'https:', 'blob:',
+              'https://fonts.gstatic.com',
+              'https://cdnjs.cloudflare.com',
+            ],
+
+            connectSrc: [
+              "'self'",
+              // Zoho
+              'https://forms.zohopublic.com',
+              'https://*.zohocdn.com',
+              // GA endpoints (collect/beacon)
+              'https://www.google-analytics.com',
+              'https://region1.google-analytics.com',
+              'https://stats.g.doubleclick.net',
+            ],
+
+            frameSrc: [
+              "'self'",
+              'https://forms.zohopublic.com',
+              'https://www.googletagmanager.com', // GTM iframe (if you use GTM container)
+            ],
+
             objectSrc: ["'none'"],
-            frameAncestors: ["'self'"],   // your site shouldn’t be framed by others
-            upgradeInsecureRequests: [],  // keep everything HTTPS
+            frameAncestors: ["'self'"],
+            upgradeInsecureRequests: [],
           },
         }
       : false,
   })
 );
+
 
 
 
@@ -66,6 +108,8 @@ app.engine('html', ejs.renderFile);   // allow .html as EJS
 app.set('view engine', 'html');
 app.use(expressLayouts);
 app.set('layout', 'layouts/main');
+
+
 
 // Static Assets
 const publicDir = path.join(__dirname, 'assets');
@@ -83,21 +127,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// optional: force HTTPS
-app.use((req, res, next) => {
-  if (req.headers['x-forwarded-proto'] !== 'https') {
-    return res.redirect(301, `https://${req.hostname}${req.originalUrl}`);
-  }
-  next();
-});
 
-// optional: redirect www → apex
-app.use((req, res, next) => {
-  if (req.hostname && req.hostname.startsWith('www.')) {
-    return res.redirect(301, `https://${req.hostname.replace(/^www\./, '')}${req.originalUrl}`);
-  }
-  next();
-});
 
 
 // Routes

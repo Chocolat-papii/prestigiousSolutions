@@ -12,24 +12,24 @@ const notFound = require('./src/middlewares/notFound');
 
 const app = express();
 
-// trust proxy (so HTTPS + host redirects work behind Heroku’s proxy)
-app.set('trust proxy', 1);
+// Trust Heroku proxy for req.secure and host headers
+app.enable('trust proxy');
 
-// optional: force HTTPS
+// 1) Force HTTPS
 app.use((req, res, next) => {
-  if (req.headers['x-forwarded-proto'] !== 'https') {
-    return res.redirect(301, `https://${req.hostname}${req.originalUrl}`);
+  if (req.secure) return next();
+  return res.redirect(301, 'https://' + req.headers.host + req.originalUrl);
+});
+
+// 2) Force WWW (only if host doesn't already start with www.)
+app.use((req, res, next) => {
+  const host = req.headers.host || '';
+  if (!/^www\./i.test(host)) {
+    return res.redirect(301, `https://www.${host}${req.originalUrl}`);
   }
   next();
 });
 
-// optional: redirect www → apex
-app.use((req, res, next) => {
-  if (req.hostname && req.hostname.startsWith('www.')) {
-    return res.redirect(301, `https://${req.hostname.replace(/^www\./, '')}${req.originalUrl}`);
-  }
-  next();
-});
 
 
 const isProd = process.env.NODE_ENV === 'production';

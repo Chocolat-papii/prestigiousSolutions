@@ -16,12 +16,42 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="/">Home</a></li>
-                                        <li><a href="/about">About</a></li>
-                                        <li><a href="/services">Services</a></li>
-                                        <li><a href="/legal">Legal</a></li>
+                                        <li><a href="/about">About Us</a></li>
+
+                                        <!-- Services dropdown -->
+                                        <li class="dropdown">
+                                            <a href="/services" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Services
+                                            </a>
+                                            <ul class="dropdown-menu" style="background-color: #c8b568;">
+                                                <li><a href="/services/ict-procurement-solutions">ICT Procurement</a></li>
+                                                <li><a href="/services/it-deployment-implementation">IT Deployment & Implementation</a></li>
+                                                <li><a href="/services/managed-it-support-services">IT Support</a></li>
+                                                <li><a href="/services/it-repairs-maintenance-services">IT Repairs & Maintenance</a></li>
+                                                <li><a href="/services/it-asset-disposal-recycling">Asset Disposal & Recycling</a></li>
+                                                <li><a href="/services/office-supplies-equipment">Office Essentials</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <!-- Legal dropdown -->
+                                        <li class="dropdown">
+                                            <a href="/legal" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Legal
+                                            </a>
+                                            <ul class="dropdown-menu" style="background-color: #c8b568;">
+                                            <li><a href="/legal/terms">Terms & Conditions</a></li>
+                                            <li><a href="/legal/privacy-policy">Privacy Policy</a></li>
+                                            </ul>
+                                        </li>
+
                                         <li><a href="/contact">Contact</a></li>
-                                        <li><a class="p-1 js-open-lead-form" style="background-color: #02cefc;" href="#" data-zoho-open>Request Quote</a></li>
-                                    </ul>
+                                        <li>
+                                            <a class="p-1 js-open-lead-form" style="background-color:#02cefc;" href="#" data-zoho-open>
+                                            Request Quote
+                                            </a>
+                                        </li>
+                                        </ul>
+
                                 </nav>
                             </div>
                         </div>
@@ -33,3 +63,15 @@
             </div>
         </div>
     </header>
+
+    <script>
+  (function () {
+    function isMobile() { return window.innerWidth < 992; }
+    // toggle submenus on tap in mobile panel
+    $(document).on('click', '.mobile_menu .dropdown > a, .slicknav_nav .dropdown > a', function (e) {
+      if (!isMobile()) return;       // let desktop behave normally
+      e.preventDefault();
+      $(this).next('.dropdown-menu').slideToggle(150);
+    });
+  })();
+</script>

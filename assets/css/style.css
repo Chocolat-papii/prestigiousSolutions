@@ -1452,7 +1452,7 @@ hr {
     background-position: center bottom;
 }
 
-.slider-bg4 {
+.slider-bg4, .slider-bg5 {
     background-image: url(../img/hero/ps-future.jpg)
 }
 
@@ -5241,4 +5241,44 @@ background: linear-gradient( #fff 50%, #ebebeb 50%);
 
 .fa-diamond {
     font-size: 10px;
+}
+
+/* --- drop down menu styles --- */
+
+/* position parent li so the submenu anchors correctly */
+.main-menu ul#navigation > li { position: relative; }
+
+/* dropdown base */
+.main-menu ul#navigation .dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  min-width: 220px;
+  z-index: 1000;
+}
+
+/* show on hover for desktop */
+@media (min-width: 992px) {
+  .main-menu ul#navigation > li.dropdown:hover > .dropdown-menu {
+    display: block;
+  }
+}
+
+/* caret for old bootstrap look */
+.main-menu ul#navigation .caret {
+  display: inline-block;
+  margin-left: .35rem;
+  border-top: 4px solid currentColor;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  vertical-align: middle;
+}
+
+/* separators if your theme doesn't style them */
+.main-menu ul#navigation .dropdown-menu .divider {
+  height: 1px;
+  margin: .5rem 0;
+  overflow: hidden;
+  background: rgba(0,0,0,.1);
 }

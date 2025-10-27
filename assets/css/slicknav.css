@@ -104,7 +104,7 @@
 
 .slicknav_nav,.slicknav_nav ul {
     list-style: none;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding: 0;
 }
 
@@ -176,3 +176,4 @@
     padding: 7px 12px;
     height: 44px;
 }
+
